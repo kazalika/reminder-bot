@@ -149,7 +149,7 @@ def inline_handler(update, context):
     if selected:
         json_editor(str(update.callback_query.from_user.id), "date", date.strftime("%d/%m/%Y"))
         context.bot.send_message(chat_id=update.callback_query.from_user.id,
-                        text="You selected %s" % (date.strftime("%d/%m/%Y")),
+                        text="Вы выбрали %s" % (date.strftime("%d/%m/%Y")),
                         reply_markup=ReplyKeyboardRemove())
         context.bot.send_message(chat_id=update.callback_query.from_user.id, text="\U0001F553* Установка *\U0001F553\n\nКогда вы хотите получить напоминание?", parse_mode="markdown", reply_markup=telegramcalendar.create_clock(user=update.callback_query.from_user.id))
         return TIME_Q
@@ -165,9 +165,9 @@ def inline_handler2(update, context):
         json_editor(chat_id, "id", r_id)
 
         context.bot.send_message(chat_id=update.callback_query.from_user.id,
-                                 text=f"You selected {format_time}",
+                                 text=f"Вы выбрали {format_time}",
                                  reply_markup=ReplyKeyboardRemove())
-        reply_keyboard = [["Yes", "No"]]
+        reply_keyboard = [["Да", "Нет"]]
         context.bot.send_message(chat_id=update.callback_query.from_user.id,
                                 text=f"\U0001F530 *Установлено* \U0001F530\n\nХотите добавить описание?",
                                   reply_markup=ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=True, resize_keyboard=True), parse_mode="markdown")
@@ -176,7 +176,7 @@ def inline_handler2(update, context):
 
 def info(update, context):
     text = update.message.text
-    if text == "Yes":
+    if text == "Да":
         update.message.reply_text(f"\U00002139 *Установлено* \U00002139\n\nОтправьте описание для напоминания!", parse_mode="markdown")
         return OPT
     else:
