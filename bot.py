@@ -5,6 +5,8 @@ from telegram import ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackQueryHandler
 import json
 import random
+import os
+
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
 )
@@ -245,7 +247,7 @@ def cancel(update, context):
 
 
 def main():
-    updater = Updater("5938398331:AAH9Zq6ld6fiEpIVfdWTlq5ni-vFgk0KxYA", use_context=True)
+    updater = Updater(os.getenv('TOKEN'), use_context=True)
 
     dp = updater.dispatcher
 
